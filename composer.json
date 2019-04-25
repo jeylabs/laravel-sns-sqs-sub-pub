@@ -1,0 +1,33 @@
+{
+    "name": "jeylabs/laravel-sns-sqs-sub-pub",
+    "description": "A simple Laravel service provider which adds a new queue connector to handle SNS subscription queues.",
+    "license": "MIT",
+    "keywords": ["laravel", "lumen", "queue", "sns subscription", "sns publishing", "microservices", "event-driven", "aws", "sqs", "sns"],
+    "type": "library",
+    "require": {
+        "php": ">=7.0",
+        "illuminate/queue": "^5.4",
+        "illuminate/support": "^5.4",
+        "aws/aws-sdk-php": "^3.91",
+        "ext-json": "*"
+    },
+    "authors": [
+        {
+            "name": "Ratheep",
+            "email": "ratheep.ceymplon@jeylabs.com.au",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jeylabs\\SnsSqsPubSub\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jeylabs\\SnsSqsPubSub\\SnsSqsPubSubServiceProvider"
+            ]
+        }
+    }
+}
