@@ -38,8 +38,8 @@ class SnsJob extends SqsJob
     {
         $realBody = json_decode(Arr::get($this->job, 'Body'), true);
 
-        if (! isset($realBody['TopicArn'])) {
-            throw new Exception(sprintf('Message with id [%s] does not have Topic ARN', $this->getJobId()));
+        if (!isset($realBody['TopicArn'])){
+            return $this->job['Body'];
         }
 
         $class = $this->map->fromTopic($realBody['TopicArn']);
