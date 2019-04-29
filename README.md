@@ -93,15 +93,6 @@ class TestSQSJob implements ShouldQueue
     }
 
     /**
-    * @param $queue
-    * @return string
-    */
-    public function onQueue($queue)
-    {
-        return "sync";
-    }
-
-    /**
      * Execute the job.
      *
      * @return void
