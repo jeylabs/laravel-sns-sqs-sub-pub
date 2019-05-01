@@ -58,7 +58,7 @@ trait SNSPublisher
     /**
      * @return array
      */
-    public function attributesToBeIgnoredInMessage(): array
+    public function attributesToMessage(): array
     {
         if (!isset(static::$publishedAttributes)) {
             return config('sns-sqs-sub-pub.published_attributes', []);
