@@ -60,12 +60,12 @@ trait SNSPublisher
      */
     public function attributesToBeIgnoredInMessage(): array
     {
-        if (!isset(static::$ignorePublishedAttributes)) {
-            return config('sns-sqs-sub-pub.ignore_attributes', []);
+        if (!isset(static::$publishedAttributes)) {
+            return config('sns-sqs-sub-pub.published_attributes', []);
         }
         return array_merge(
-            static::$ignorePublishedAttributes,
-            config('sns-sqs-sub-pub.ignore_attributes', [])
+            static::$publishedAttributes,
+            config('sns-sqs-sub-pub.published_attributes', [])
         );
     }
 
@@ -91,7 +91,7 @@ trait SNSPublisher
      */
     protected function attributeValuesToBePublish()
     {
-        return Arr::except($this->getAttributes(), $this->attributesToBeIgnoredInMessage());
+        return Arr::only($this->getAttributes(), $this->attributesToMessage());
     }
 
     /**
@@ -110,6 +110,6 @@ trait SNSPublisher
         }
 
         //do not published if only ignored attributes are changed
-        return (bool)count(Arr::except($this->getDirty(), $this->attributesToBeIgnoredInMessage()));
+        return (bool)count(Arr::only($this->getDirty(), $this->attributesToMessage()));
     }
 }

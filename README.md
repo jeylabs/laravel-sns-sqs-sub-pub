@@ -30,7 +30,8 @@ return [
     'map' => [
         \App\Jobs\TestSQSJob::class => 'SampleTopic',
     ],
-    'ignore_attributes' => [
+    'published_attributes' => [
+        'id',
         'created_at',
         'updated_at'
     ],
@@ -121,9 +122,10 @@ class Post extends Model
     /**
      * @var array
      * Optional (default value is [] )
-     * Witch are the attributes should ignore from SNS message
+     * Witch are the attributes should only from SNS message
      */
-    static $ignorePublishedAttributes = [
+    static $publishedAttributes = [
+        'id',
         'created_at',
         'updated_at'
     ];

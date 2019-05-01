@@ -5,7 +5,8 @@ return [
     'map' => [
         \App\Jobs\TestSQSJob::class => 'arn:aws:sns:ap-southeast-1:931616835216:modelEvent',
     ],
-    'ignore_attributes' => [
+    'published_attributes' => [
+        'id',
         'created_at',
         'updated_at'
     ],
